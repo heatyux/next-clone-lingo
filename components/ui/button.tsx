@@ -13,6 +13,8 @@ const buttonVariants = cva(
           "bg-white text-black border-slate-200 border-2 border-b-4 active:border-b-2 hover:bg-salte-100 text-slate-500",
 
         // custom
+        locked:
+          "bg-neutral-200 text-primary-foreground hover:bg-neutral-200/90 border-neutral-400 border-b-4 active:border-b-0",
         primary:
           "bg-sky-400 text-primary-foreground border-sky-500 border-b-4 hover:bg-sky-400/90 active:border-b-0",
         primaryOutline: "bg-white text-sky-500 hover:bg-slate-100",
