@@ -17,7 +17,7 @@ export const UserProgress = ({
 }: UserProgressProps) => {
   return (
     <div className="flex items-center justify-between gap-x-2 w-full">
-      <Link href="/course">
+      <Link href="/courses">
         <Button variant="ghost">
           <Image
             src={activeCourse.imageSrc}
