@@ -24,3 +24,12 @@ export const getUserProgress = cache(async () => {
 
   return data;
 });
+
+export const getCourse = cache(async (courseId: number) => {
+  const data = await db.query.coursesTable.findFirst({
+    where: eq(coursesTable.id, courseId),
+    // TODO: Populate units and lessons
+  });
+
+  return data;
+});
