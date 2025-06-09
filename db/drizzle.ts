@@ -1,7 +1,9 @@
-import { neon } from '@neondatabase/serverless'
-import { drizzle } from 'drizzle-orm/neon-http'
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 
-const sql = neon(process.env.DATABASE_URL!)
-const db = drizzle({client: sql})
+import * as schema from "./schema";
 
-export default db
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle({ client: sql, schema });
+
+export default db;
