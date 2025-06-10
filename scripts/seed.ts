@@ -62,6 +62,30 @@ const main = async () => {
         order: 1,
         title: "Nouns",
       },
+      {
+        id: 2,
+        unitId: 1, // Unit 1 (Learn the basics of Spanish)
+        order: 2,
+        title: "Verbs",
+      },
+      {
+        id: 3,
+        unitId: 1, // Unit 1 (Learn the basics of Spanish)
+        order: 3,
+        title: "Sentences",
+      },
+      {
+        id: 4,
+        unitId: 1, // Unit 1 (Learn the basics of Spanish)
+        order: 4,
+        title: "Pronouns",
+      },
+      {
+        id: 5,
+        unitId: 1, // Unit 1 (Learn the basics of Spanish)
+        order: 5,
+        title: "Revision",
+      },
     ]);
 
     console.log("Inserting challenge for Spanish (Unit 1, Lesson 1)...");
