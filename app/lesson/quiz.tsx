@@ -5,6 +5,7 @@ import { challengeOptions, challenges } from "@/db/schema";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
+import { Footer } from "./footer";
 
 type QuizProps = {
   initialPercentage: number;
@@ -83,6 +84,8 @@ export const Quiz = ({
           </div>
         </div>
       </div>
+
+      <Footer status={status} disabled={!selectOption} onClick={() => {}} />
     </>
   );
 };
