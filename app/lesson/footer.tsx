@@ -59,6 +59,7 @@ export const Footer = ({
           className="ml-auto"
           size={isMobile ? "sm" : "lg"}
           variant={status === "wrong" ? "danger" : "secondary"}
+          onClick={onClick}
         >
           {status === "none" && "Check"}
           {status === "correct" && "Next"}
