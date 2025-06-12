@@ -48,7 +48,7 @@ export const Quiz = ({
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
   const challenge = challenges[activeIndex];
-  const options = challenge.challengeOptions ?? [];
+  const options = challenge?.challengeOptions ?? [];
 
   const onNext = () => {
     setActiveIndex((current) => current + 1);
