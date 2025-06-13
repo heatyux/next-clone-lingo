@@ -6,9 +6,12 @@ import {
   lessons,
   units,
   userProgress,
+  userSubscription,
 } from "./schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
+
+const DAY_IN_MS = 86_400_000;
 
 export const getCourses = cache(async () => {
   const data = await db.select().from(coursesTable);
@@ -211,4 +214,29 @@ export const getLessonPercentage = cache(async () => {
   );
 
   return percentage;
+});
+
+export const getUserSubscription = cache(async () => {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return null;
+  }
+
+  const data = await db.query.userSubscription.findFirst({
+    where: eq(userSubscription.userId, userId),
+  });
+
+  if (!data) {
+    return null;
+  }
+
+  const isActive =
+    data.stripePriceId &&
+    data.stripeCurrentPeriodEnd?.getTime() + DAY_IN_MS > Date.now();
+
+  return {
+    ...data,
+    isActive,
+  };
 });
