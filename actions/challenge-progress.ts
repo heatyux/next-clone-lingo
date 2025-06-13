@@ -77,7 +77,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
   await db
     .update(userProgress)
     .set({
-      points: currentUserProgress.points + 100,
+      points: currentUserProgress.points + 10,
     })
     .where(eq(userProgress.userId, userId));
 
