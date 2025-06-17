@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { InfinityIcon } from "lucide-react";
 
 type ResultCardProps = {
   variant: "points" | "hearts";
@@ -41,7 +42,11 @@ export const ResultCard = ({ variant, value }: ResultCardProps) => {
           height={30}
           className="mr-1.5"
         />
-        {value}
+        {value === Infinity ? (
+          <InfinityIcon className="h-6 w-6 stroke-[3]" />
+        ) : (
+          value
+        )}
       </div>
     </div>
   );
