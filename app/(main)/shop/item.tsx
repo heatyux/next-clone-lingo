@@ -14,7 +14,7 @@ type ItemProps = {
   hasActiveSubscription: boolean;
 };
 
-export const Item = ({ hearts, points, hasActiveSubscription }: ItemProps) => {
+export const Items = ({ hearts, points, hasActiveSubscription }: ItemProps) => {
   const [pending, startTransition] = useTransition();
 
   const onRefillHearts = () => {

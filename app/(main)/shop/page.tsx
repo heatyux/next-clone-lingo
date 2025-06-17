@@ -6,7 +6,7 @@ import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
 
-import { Item } from "./item";
+import { Items } from "./item";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -44,7 +44,7 @@ const LearnPage = async () => {
             Spend your points on cool stuff.
           </p>
 
-          <Item
+          <Items
             hearts={userProgress.hearts}
             points={userProgress.points}
             hasActiveSubscription={isPro}
