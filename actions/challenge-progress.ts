@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import db from "@/db/drizzle";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { MAX_HEARTS } from "@/constants";
 
 export const upsertChallengeProgress = async (challengeId: number) => {
   const { userId } = await auth();
@@ -58,7 +59,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     await db
       .update(userProgress)
       .set({
-        hearts: Math.min(currentUserProgress.hearts + 1, 5),
+        hearts: Math.min(currentUserProgress.hearts + 1, MAX_HEARTS),
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, userId));

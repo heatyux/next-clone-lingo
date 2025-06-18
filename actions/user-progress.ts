@@ -8,7 +8,7 @@ import db from "@/db/drizzle";
 import { getCourse, getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
-import { POINTS_TO_REFILL } from "@/constants";
+import { MAX_HEARTS, POINTS_TO_REFILL } from "@/constants";
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
@@ -121,7 +121,7 @@ export const refillHearts = async () => {
     throw new Error("User progress not found.");
   }
 
-  if (currentUserProgress.hearts === 5) {
+  if (currentUserProgress.hearts === MAX_HEARTS) {
     throw new Error("Hearts are already full.");
   }
 
@@ -132,7 +132,7 @@ export const refillHearts = async () => {
   await db
     .update(userProgress)
     .set({
-      hearts: 5,
+      hearts: MAX_HEARTS,
       points: currentUserProgress.points - POINTS_TO_REFILL,
     })
     .where(eq(userProgress.userId, currentUserProgress.userId));

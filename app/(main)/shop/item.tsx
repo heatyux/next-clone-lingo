@@ -3,7 +3,7 @@
 import { refillHearts } from "@/actions/user-progress";
 import { createStripeUrl } from "@/actions/user-subscription";
 import { Button } from "@/components/ui/button";
-import { POINTS_TO_REFILL } from "@/constants";
+import { MAX_HEARTS, POINTS_TO_REFILL } from "@/constants";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -18,7 +18,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: ItemProps) => {
   const [pending, startTransition] = useTransition();
 
   const onRefillHearts = () => {
-    if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
+    if (pending || hearts === MAX_HEARTS || points < POINTS_TO_REFILL) {
       return;
     }
 
@@ -52,11 +52,13 @@ export const Items = ({ hearts, points, hasActiveSubscription }: ItemProps) => {
         </div>
 
         <Button
-          disabled={pending || hearts === 5 || points < POINTS_TO_REFILL}
+          disabled={
+            pending || hearts === MAX_HEARTS || points < POINTS_TO_REFILL
+          }
           aria-disabled={pending || hearts === 5 || points < POINTS_TO_REFILL}
           onClick={onRefillHearts}
         >
-          {hearts === 5 ? (
+          {hearts === MAX_HEARTS ? (
             "full"
           ) : (
             <div className="flex items-center">
