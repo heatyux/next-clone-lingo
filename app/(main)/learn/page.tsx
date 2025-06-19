@@ -12,6 +12,7 @@ import {
 import { redirect } from "next/navigation";
 import { Unit } from "./unit";
 import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -51,6 +52,7 @@ const LearnPage = async () => {
         />
 
         {!isPro && <Promo />}
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
