@@ -19,8 +19,6 @@ type UnitProps = {
 };
 
 export const Unit = ({
-  id,
-  order,
   description,
   title,
   lessons,

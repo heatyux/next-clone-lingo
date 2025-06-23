@@ -19,7 +19,6 @@ type CardProps = {
 };
 
 export const Card = ({
-  id,
   text,
   imageSrc,
   audioSrc,
@@ -30,7 +29,7 @@ export const Card = ({
   disabled,
   onClick,
 }: CardProps) => {
-  const [audio, _, controls] = useAudio({ src: audioSrc || "" });
+  const [audio, , controls] = useAudio({ src: audioSrc || "" });
 
   const handleClick = useCallback(() => {
     if (disabled) return;
